@@ -13,6 +13,6 @@ public class CommandInvoker
 
     public static void UndoCommand()
     {
-        undoStack.Pop();
+        if(undoStack.Count > 0) undoStack.Pop().Undo();
     }
 }
