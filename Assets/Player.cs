@@ -1,35 +1,59 @@
 using System;
 
-public abstract class Shape
+public interface Iturnable
 {
-    public abstract float CalcultateArea();
+    public void TurnableLeft();
+    public void TurnableRight();
 }
 
-public class Rectangle : Shape
+public interface IMovable
 {
-    public float Width;
-    public float Height;
+    public void GoForward();
+    public void Move();
+}
 
-    public override float CalcultateArea()
+public abstract class RoadVehicule : Iturnable, IMovable
+{
+    public void GoForward()
     {
-        return Width * Height;
+        throw new NotImplementedException();
+    }
+
+    public void Move()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void TurnableLeft()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void TurnableRight()
+    {
+        throw new NotImplementedException();
     }
 }
 
-public class Circle : Shape
+public abstract class RailVehicule : IMovable
 {
-    public float Radius;
-
-    public override float CalcultateArea()
+    public void GoForward()
     {
-        return MathF.PI * MathF.Pow(Radius, 2);
+        throw new NotImplementedException();
+    }
+
+    public void Move()
+    {
+        throw new NotImplementedException();
     }
 }
 
-public class AreaCalculator
+public class Car : RoadVehicule
 {
-    public float GetArea(Shape shape)
-    {
-        return shape.CalcultateArea();
-    }
+
+}
+
+public class Train : RailVehicule
+{
+
 }
