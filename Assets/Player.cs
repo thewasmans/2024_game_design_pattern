@@ -1,40 +1,35 @@
-using Unity.VisualScripting;
-using UnityEngine;
+using System;
 
-public class PlayerMovement
+public abstract class Shape
 {
-    public void Move()
+    public abstract float CalcultateArea();
+}
+
+public class Rectangle : Shape
+{
+    public float Width;
+    public float Height;
+
+    public override float CalcultateArea()
     {
-        Debug.Log("Move the player");
+        return Width * Height;
     }
 }
 
-public class PlayerSound
+public class Circle : Shape
 {
-    public void PlaySound()
+    public float Radius;
+
+    public override float CalcultateArea()
     {
-        Debug.Log("Play sound from player");
+        return MathF.PI * MathF.Pow(Radius, 2);
     }
 }
 
-public class Player : MonoBehaviour
+public class AreaCalculator
 {
-    public PlayerSound PlayerSound = new PlayerSound();
-    public PlayerMovement PlayerMovement = new PlayerMovement();
-
-    public void MovePlayer()
+    public float GetArea(Shape shape)
     {
-        PlayerMovement.Move();
-    }
-
-    public void PlayPlayerSound()
-    {
-        PlayerSound.PlaySound();
-    }
-
-    void Start()
-    {
-        MovePlayer();
-        PlayerSound.PlaySound();
+        return shape.CalcultateArea();
     }
 }
