@@ -1,23 +1,11 @@
-public interface IMovable
+public interface ISwitchtable
 {
-    public void Move();
+    void Actidate();
+    void Deactidate();
+    void IsActivae();
 }
 
-public interface IJumpable
+public class Switch
 {
-    public void Jump();
-}
-
-public class Soldier : IMovable, IJumpable
-{
-    public float MoveSpeed { get; set; }
-    public float Acceleration { get; set; }
-
-    public void Jump()
-    {
-    }
-
-    public void Move()
-    {
-    }
+    private ISwitchtable switchable;
 }
