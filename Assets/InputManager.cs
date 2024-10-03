@@ -12,11 +12,12 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) RunPlayerCommand(Vector3.left);
         if (Input.GetKeyDown(KeyCode.D)) RunPlayerCommand(Vector3.right);
         if (Input.GetKeyDown(KeyCode.Backspace)) OnUndoInput();
+        CommandInvoker.ExecuteCommand();
     }
     
     public void RunPlayerCommand(Vector3 direction)
     {
-        CommandInvoker.ExecuteCommand(new MoveCommand(playerMover, direction));
+        CommandInvoker.PushCommand(new MoveCommand(playerMover, direction));
     }
 
     public void OnUndoInput()
